@@ -1,0 +1,103 @@
+module BlockBee
+  BLOCKBEE_HOST: string
+  BLOCKBEE_URL: string
+  VERSION: String
+
+  class API
+    @callback_url: string
+    @coin: string
+    @own_address: string
+    @coin: string
+    @parameters: Hash[untyped, untyped]
+    @bb_params: Hash[untyped, untyped]
+    @api_key: string
+    @payment_address: string
+
+    def get_address: -> string
+
+    def get_conversion: -> untyped
+
+    def get_logs: -> untyped
+
+    def get_qrcode: -> untyped
+
+    def get_info: -> untyped
+
+    def self.get_supported_coins: -> untyped
+
+    def self.get_estimate: -> untyped
+
+    def self.create_payout: -> untyped
+
+    def self.list_payouts: -> untyped
+
+    def self.get_payout_wallet: -> untyped
+
+    def self.create_payout_by_ids: -> untyped
+
+    def self.process_payout: -> untyped
+
+    def self.check_payout_status: -> untyped
+
+  end
+
+  class Checkout
+
+    @api_key: string
+    @bb_params: hash[untyped, untyped]
+    @parameters: hash[untyped, untyped]
+    @notify_url: string
+
+    def self.deposit_logs: -> untyped
+
+    def self.payment_logs: -> untyped
+
+    def deposit_request: -> untyped
+
+    def payment_request: -> untyped
+
+  end
+
+  private
+
+  def self.process_request_get: -> untyped
+  def self.process_request_post: -> untyped
+end
+
+class TestBlockBee
+  def test_can_check_payout_status: -> TrueClass
+
+  def test_can_create_checkout_payment: -> TrueClass
+
+  def test_can_create_deposit: -> TrueClass
+
+  def test_can_create_payout_by_is: -> TrueClass
+
+  def test_can_create_payouts: -> TrueClass
+
+  def test_can_fetch_deposit_logs: -> TrueClass
+
+  def test_can_fetch_logs: -> TrueClass
+
+  def test_can_fetch_payment_logs: -> TrueClass
+
+  def test_can_generate_address: -> TrueClass
+
+  def test_can_get_conversion: -> TrueClass
+
+  def test_can_get_estimate: -> TrueClass
+
+  def test_can_get_info: -> TrueClass
+
+  def test_can_get_payout_wallet: -> TrueClass
+
+  def test_can_get_qrcode: -> TrueClass
+
+  def test_can_get_supported_coins: -> TrueClass
+
+  def test_can_list_payouts: -> TrueClass
+
+  def test_can_process_payout_by_id: -> TrueClass
+
+  def test_that_it_has_a_version_number: -> TrueClass
+end
