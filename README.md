@@ -27,6 +27,8 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
     $ gem install blockbee
 
+[RubyGem Page](https://rubygems.org/gems/blockbee/versions/1.0.0)
+
 ## API and utils
 
 ### Importing in your project file
