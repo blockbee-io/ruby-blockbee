@@ -3,6 +3,14 @@ module BlockBee
   BLOCKBEE_URL: string
   VERSION: String
 
+  class APIError
+    @status_code: Integer
+
+    def self.from_status_code: -> untyped
+
+    attr_reader status_code: Integer
+  end
+
   class API
     @callback_url: string
     @coin: string
@@ -21,7 +29,7 @@ module BlockBee
 
     def get_qrcode: -> untyped
 
-    def get_info: -> untyped
+    def self.get_info: -> untyped
 
     def self.get_supported_coins: -> untyped
 

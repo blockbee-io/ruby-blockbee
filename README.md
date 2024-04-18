@@ -42,17 +42,16 @@ require 'blockbee'
 ```ruby
 require 'blockbee'
 
-info = BlockBee::API.get_info(coin, api_key, prices)
+info = BlockBee::API.get_info(coin, prices)
 
 # or if you wish to get full BlockBee service information
 
-info = BlockBee::API.get_info(nil, api_key, prices)
+info = BlockBee::API.get_info(nil, prices)
 
 ```
 
 ### Where
 * ``coin`` is the coin you wish to use, from BlockBee's supported currencies (e.g 'btc', 'eth', 'erc20_usdt', ...).
-* ``api_key`` is the API Key provided by BlockBee's [dashboard](https://dash.blockbee.io/).
 * ``prices`` by default `0`. If `1` will return the prices of the cryptocurrencies converted to all supported FIAT currencies.
 
 ### Generating a new Address
@@ -133,8 +132,7 @@ qrcode = blockbee_helper.get_qrcode(value, size)
 #### Where:
 
 * ``value`` is the value requested to the user in the coin to which the request was done. **Optional**, can be empty if you don't wish to add the value to the QR Code.
-* ``size`` Size of the QR Code image in pixels. Optional, leave empty to use the default size of 512.
-* ``api_key`` is the API Key provided by BlockBee's [dashboard](https://dash.blockbee.io/).
+* ``size`` Size of the QR Code image in pixels. Optional, leave empty to use the default size of 300.
 
 > Response is an object with `qr_code` (base64 encoded image data) and `payment_uri` (the value encoded in the QR), see https://docs.blockbee.io/#operation/qrcode for more information.
 
@@ -157,14 +155,13 @@ qrcode = blockbee_helper.get_qrcode(value, size)
 ```ruby
 require 'blockbee'
 
-estimation = BlockBee::API.get_estimate(coin, addresses, priority, api_key)
+estimation = BlockBee::API.get_estimate(coin, addresses, priority)
 ```
 
 #### Where:
 * ``coin`` is the coin you wish to check, from BlockBee's supported currencies (e.g 'btc', 'eth', 'erc20_usdt', ...)
 * ``addresses`` The number of addresses to forward the funds to. Optional, defaults to 1.
 * ``priority`` Confirmation priority, (check [this](https://support.blockbee.io/article/how-the-priority-parameter-works) article to learn more about it). Optional, defaults to ``default``.
-* ``api_key`` is the API Key provided by BlockBee's [dashboard](https://dash.blockbee.io/).
 
 > Response is an object with ``estimated_cost`` and ``estimated_cost_usd``, see https://docs.blockbee.io/#operation/estimate for more information.
 
@@ -215,11 +212,8 @@ conversion = blockbee_helper.get_conversion(from_coin, value)
 ```ruby
 require 'blockbee'
 
-supported_coins = BlockBee::API.get_supported_coins(api_key)
+supported_coins = BlockBee::API.get_supported_coins
 ```
-
-### Where:
-* ``api_key`` is the API Key provided by BlockBee's [dashboard](https://dash.blockbee.io/).
 
 > Response is an array with all supported coins.
 
