@@ -3,7 +3,7 @@
 require "test_helper"
 
 class TestBlockBee < Minitest::Test
-  API_KEY = # '<api-key-here>'
+  API_KEY = '<api-key-here>'
   COIN = 'bep20_usdt'
   OWN_ADDRESS = ''
   CALLBACK_URL = 'https://webhook.site/ef8e2859-12a9-4028-8a94-51582e83dd05'

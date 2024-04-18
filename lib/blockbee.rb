@@ -165,8 +165,6 @@ module BlockBee
     end
 
     def self.create_payout(coin, payout_requests, api_key, process: false)
-      raise 'No requests provided' if payout_requests.nil? || payout_requests.empty?
-
       body = { 'outputs' => payout_requests }
 
       endpoint = 'payout/request/bulk'
@@ -179,8 +177,6 @@ module BlockBee
     end
 
     def self.list_payouts(coin, api_key, status: 'all', page: 1, payout_request: false)
-      return nil if api_key.nil?
-
       _params = {
         'apikey' => api_key,
         'status' => status,
@@ -221,24 +217,18 @@ module BlockBee
     end
 
     def self.create_payout_by_ids(api_key, payout_ids)
-      raise 'Please provide the Payout Request(s) ID(s)' if payout_ids.nil? || payout_ids.empty?
-
       _payout = BlockBee::process_request_post(nil, 'payout/create', api_key, body: { 'request_ids' => payout_ids.join(',') })
 
       _payout
     end
 
     def self.process_payout(api_key, payout_id)
-      return nil if payout_id.nil?
-
       _process = BlockBee::process_request_post(nil, 'payout/process', api_key, body: { 'payout_id' => payout_id })
 
       _process
     end
 
     def self.check_payout_status(api_key, payout_id)
-      raise 'Please provide the Payout ID' if payout_id.nil? or (payout_id.is_a? String and payout_id.empty?)
-
       _status = BlockBee::process_request_post(nil, 'payout/status', api_key, body: { 'payout_id' => payout_id })
 
       _status
@@ -266,8 +256,7 @@ module BlockBee
     end
 
     def payment_request(redirect_url, value)
-      raise 'Please provide a redirect url' if redirect_url.nil? or redirect_url.empty?
-      raise 'Value must be a integer' unless value.is_a?(Integer)
+      raise ArgumentError, 'Provide a valid number' unless value.is_a?(Numeric)
 
       _params = {
         'redirect_url' => redirect_url,
@@ -284,10 +273,6 @@ module BlockBee
     end
 
     def self.payment_logs(token, api_key)
-      raise BlockBee::MissingAPIKeyError, 'Provide your API Key' if api_key.nil?
-
-      raise 'Token required' if token.nil? or token.empty?
-
       _params = {
         'apikey' => api_key,
         'token' => token
@@ -310,10 +295,6 @@ module BlockBee
     end
 
     def self.deposit_logs(token, api_key)
-      raise 'API Key required' if api_key.nil? or api_key.empty?
-
-      raise 'Token required' if token.nil? or token.empty?
-
       _params = {
         'apikey' => api_key,
         'token' => token
