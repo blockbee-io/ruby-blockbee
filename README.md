@@ -408,8 +408,8 @@ If `process` is `false`.
 {
   "status": "success",
   "request_ids": [
-    103227,
-    103228
+    "3825d29b-7a8f-47da-8623-e99850674247",
+    "d9925105-ea5f-4661-8d01-505096212ac5"
   ]
 }
 ```
@@ -418,6 +418,22 @@ If `process` is `true`.
 ```json
 {
   "status": "success",
+  "payout_info": {
+    "id": "d9219d07-a8e5-4d89-a869-3c5717a25b27",
+    "status": "Created",
+    "from": "",
+    "requests": {
+      "0xA8EbeD50f2e05fB4a25b2DdCdc651A7CA769B5CF": "0.300000000000000000",
+      "0xA6B78B56ee062185E405a1DDDD18cE8fcBC4395d": "0.200000000000000000"
+    },
+    "total_requested": "0.5",
+    "total_with_fee": "0.505",
+    "total_fiat": "",
+    "fee": "0.005",
+    "coin": "bep20_usdt",
+    "txid": "",
+    "timestamp": "05/03/2024 15:00:00"
+  },
   "queued": true
 }
 ```
@@ -450,7 +466,7 @@ list_payouts = BlockBee::API.list_payouts(coin, status, page, api_key, payout_re
   "status": "success",
   "payouts": [
     {
-      "id": 2460,
+      "id": "3825d29b-7a8f-47da-8623-e99850674247",
       "status": "Done",
       "total_requested": "0.6",
       "total_with_fee": "0.606",
@@ -508,7 +524,7 @@ payout = BlockBee::API.create_payout_by_ids(api_key, payout_ids)
 {
   "status": "success",
   "payout_info": {
-    "id": 2461,
+    "id": "d9219d07-a8e5-4d89-a869-3c5717a25b27",
     "status": "Created",
     "from": "",
     "requests": {
@@ -544,7 +560,23 @@ payout = BlockBee::API.process_payout(api_key, payout_ids)
 
 ```json
 { 
-  "status": "success", 
+  "status": "success",
+  "payout_info": {
+    "id": "d9219d07-a8e5-4d89-a869-3c5717a25b27",
+    "status": "Created",
+    "from": "",
+    "requests": {
+      "0xA8EbeD50f2e05fB4a25b2DdCdc651A7CA769B5CF": "0.300000000000000000",
+      "0xA6B78B56ee062185E405a1DDDD18cE8fcBC4395d": "0.200000000000000000"
+    },
+    "total_requested": "0.5",
+    "total_with_fee": "0.505",
+    "total_fiat": "",
+    "fee": "0.005",
+    "coin": "bep20_usdt",
+    "txid": "",
+    "timestamp": "05/03/2024 15:00:00"
+  },
   "queued": true
 }
 ```
@@ -571,7 +603,7 @@ status = BlockBee::API.check_payout_status(api_key, payout_id)
 {
   "status": "success",
   "payout_info": {
-    "id": 2463,
+    "id": "d9219d07-a8e5-4d89-a869-3c5717a25b27",
     "status": "Done",
     "from": "0x18B211A1Ba5880C7d62C250B6441C2400d588589",
     "requests": {
