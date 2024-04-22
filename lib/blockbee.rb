@@ -35,7 +35,7 @@ module BlockBee
 
   class CallbackURLMissing < StandardError; end
 
-  VERSION = "1.0.0"
+  VERSION = "1.0.1"
 
   BLOCKBEE_URL = 'https://api.blockbee.io/'
   BLOCKBEE_HOST = 'api.blockbee.io'
